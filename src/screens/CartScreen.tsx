@@ -9,7 +9,7 @@ import UIButton from '../components/UIButton';
 const CartScreen = props => {
   const {productList} = useSelector(state => state?.productList);
   const {cartMap} = useSelector(state => state?.cartList);
-  const filteredList = productList.filter(item => cartMap.get(item?.id));
+  const filteredList = productList?.filter(item => cartMap.get(item?.id));
   const dispatch = useDispatch();
 
   const calculateCartValue = () => {
@@ -76,7 +76,7 @@ const CartScreen = props => {
     <View style={styles.container}>
       <FlatList
         data={filteredList}
-        ListHeaderComponent={filteredList.length && renderHeader}
+        ListHeaderComponent={filteredList?.length && renderHeader}
         ListEmptyComponent={renderEmptyComp}
         renderItem={renderCartList}
         ItemSeparatorComponent={renderSeparator}
