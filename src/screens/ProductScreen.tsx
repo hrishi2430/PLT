@@ -5,6 +5,7 @@ import UIButton from '../components/UIButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {addTOCartAction, removeFromCartAction} from '../actions';
 import QuantityComponent from '../components/QuantityComponent';
+import {isIosDevice} from '../utils';
 
 const ProductScreen = props => {
   const {selectedProduct} = props?.route?.params;
@@ -35,7 +36,9 @@ const ProductScreen = props => {
   return (
     <View style={styles.container}>
       <Image
-        source={{uri: selectedProduct?.img}}
+        source={
+          isIosDevice ? selectedProduct?.imgSrc : {uri: selectedProduct?.img}
+        }
         style={styles.fullImageStyle}
         resizeMode="center"
       />

@@ -5,6 +5,7 @@ import styles from './styles';
 import QuantityComponent from '../components/QuantityComponent';
 import {addTOCartAction, removeFromCartAction} from '../actions';
 import UIButton from '../components/UIButton';
+import {isIosDevice} from '../utils';
 
 const CartScreen = props => {
   const {productList} = useSelector(state => state?.productList);
@@ -30,7 +31,7 @@ const CartScreen = props => {
     return (
       <View style={styles.productContainer}>
         <Image
-          source={{uri: item?.img}}
+          source={isIosDevice ? item?.imgSrc : {uri: item?.img}}
           style={styles.imageStyle}
           resizeMode="stretch"
         />

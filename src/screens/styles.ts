@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     height: '60%',
     marginBottom: 20,
   },
+  subText: {
+    fontSize: 16,
+    lineHeight: 26,
+  },
   subTextStyle: {
     fontSize: 16,
     lineHeight: 26,

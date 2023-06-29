@@ -4,6 +4,7 @@ import {ProductInterface} from '../interface';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchProductList} from '../services';
 import styles from './styles';
+import {isIosDevice} from '../utils';
 
 const HomeScreen = props => {
   const {productList} = useSelector(state => state?.productList);
@@ -22,13 +23,14 @@ const HomeScreen = props => {
         style={styles.productContainer}
         onPress={() => onProductPress(item)}>
         <Image
-          source={{uri: item?.img}}
+          source={isIosDevice ? item?.imgSrc : {uri: item?.img}}
           style={styles.imageStyle}
           resizeMode="stretch"
         />
         <View style={styles.flexContainer}>
           <Text style={styles.titleTextStyle}>{item?.name}</Text>
           <Text style={styles.priceStyle}>{'£ ' + item?.price.toFixed(2)}</Text>
+          <Text style={styles.subText}>Color: {item?.colour}</Text>
         </View>
       </Pressable>
     );
@@ -39,6 +41,7 @@ const HomeScreen = props => {
     <View style={styles.container}>
       <FlatList
         data={productList}
+        showsVerticalScrollIndicator={false}
         renderItem={renderProduct}
         ItemSeparatorComponent={renderSeparator}
         keyExtractor={item => item.id.toString()}

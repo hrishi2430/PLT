@@ -13,11 +13,11 @@ interface QuantityComponentProps {
 const QuantityComponent = (props: QuantityComponentProps) => {
   return (
     <View style={[styles.quantityContainer, props?.styles]}>
-      <UIIcon iName="minus-square" onPress={props.onMinus} />
+      <UIIcon iconImage={require('../assets/minusSquare.png')} onPress={props.onMinus} />
       <Text style={[styles.priceStyle, styles.setMargin]}>
         {props.quantity}
       </Text>
-      <UIIcon iName="plus-square" onPress={props.onPlus} />
+      <UIIcon iconImage={require('../assets/plusSquare.png')} onPress={props.onPlus} />
     </View>
   );
 };
